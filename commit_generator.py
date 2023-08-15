@@ -29,7 +29,7 @@ def generate_commits(workdaysOnly=False, commitsPerDay="0,3", startDate=None, en
             commits_per_day, gradient_type, workdaysOnly, noCommitPercentage, working_hours_range, start_date, end_date
         )
         # return
-        print("Generating your GitHub activity")
+        print("Generating your GitHub commit history")
 
         history_folder = "github-history"
 
@@ -48,7 +48,7 @@ def generate_commits(workdaysOnly=False, commitsPerDay="0,3", startDate=None, en
         # print("GIT INIT")
 
         for commit_date in commit_date_list:
-            print(f"Generating your GitHub activity... ({commit_date.strftime('%Y-%m-%d %H:%M:%S')})")
+            print(f"Generating GitHub commit history... ({commit_date.strftime('%Y-%m-%d %H:%M:%S')})")
             with open("foo.txt", "w") as file:
                 # file.write("TEST")
                 file.write(commit_date.strftime('%Y-%m-%d %H:%M:%S'))
@@ -56,6 +56,6 @@ def generate_commits(workdaysOnly=False, commitsPerDay="0,3", startDate=None, en
             subprocess.run(
                 ["git", "commit", "--quiet", "--date", commit_date.strftime('%Y-%m-%d %H:%M:%S'), "-m", "fake commit"]
             )
-        print(f"Success: {len(commit_date_list)} commits have been created.")
+        print(f"{len(commit_date_list)} commits have been created.")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
