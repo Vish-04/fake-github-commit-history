@@ -1,12 +1,12 @@
 from commit_generator import generate_commits
 
 if __name__ == "__main__":
-    workdaysOnly = False
-    commitsPerDay = "1,5"
-    startDate = "2023-01-01"
-    endDate = "2023-12-31"
+    workdays_only = False
+    commits_per_day = "1,5"
+    start_date = "2023-01-01"
+    end_date = "2023-12-31"
     gradient = "linear"
-    noCommitPercentage = 0
-    workingHours = "9-18"
+    no_commit_percentage = 0
+    working_hours = "9-18"
 
-    generate_commits(startDate, endDate, gradient, workingHours, workdaysOnly=True, noCommitPercentage=0.3,commitsPerDay="1,5")
+    generate_commits(start_date, end_date, gradient, working_hours, workdays_only=True, no_commit_percentage=0.3,commits_per_day="1,5")
