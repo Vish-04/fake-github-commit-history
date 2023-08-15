@@ -76,6 +76,8 @@ def generate_commits(workdays_only=False, weekend_behavior=False, commits_per_da
         except:
             print("Error: end_date must be in a valid date in the format MM/DD/YYYY.")
             return
+        if(start_date >= end_date):
+            raise ValueError("start_date cannot be later than the end_date")
         # print("WEEKEND BEHAVIOR: ")
         print(weekend_behavior)
         validate_boolean(weekend_behavior, "weekend_behavior")
