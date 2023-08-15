@@ -23,8 +23,13 @@ def create_commit_date_list(commits_per_day, gradient, workdays_only, no_commit_
                 lower_bound = 0
                 commits_range = random.randint(0,1)
                 if not weekend_behavior:
-                    lower_bound = round(commits_per_day[0] + (round(sum(commits_per_day) / len(commits_per_day)) - commits_per_day[0]) * (day_count/date_difference))
-                    commits_range = random.randint(lower_bound, commits_per_day[1])
+                    if (gradient == 'linear'):
+                        lower_bound = round(commits_per_day[0] + (round(sum(commits_per_day) / len(commits_per_day)) - commits_per_day[0]) * (day_count/date_difference))
+                        commits_range = random.randint(lower_bound, commits_per_day[1])
+                    elif(gradient == 'exponential'):
+                        pass
+                    elif(gradient=='bursts'):
+                        pass
                 for commit in range(commits_range):
                     date_with_hours = current_date.replace(
                         hour=random.randint(working_hours_range[0], working_hours_range[1])
