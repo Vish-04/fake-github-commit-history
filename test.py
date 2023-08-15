@@ -8,5 +8,6 @@ if __name__ == "__main__":
     gradient = "linear"
     no_commit_percentage = 0
     working_hours = "9-18"
+    weekend_behavior = True
 
-    generate_commits(start_date, end_date, gradient, working_hours, workdays_only=True, no_commit_percentage=0.3,commits_per_day="1,5")
+    generate_commits(start_date, end_date, gradient, working_hours, weekend_behavior=True, no_commit_percentage=0.3,commits_per_day="1,5")

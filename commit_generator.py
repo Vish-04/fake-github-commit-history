@@ -7,14 +7,11 @@ from dateutil.parser import parse
 from pathlib import Path
 from history_generator import create_commit_date_list
 
-def generate_commits(workdays_only=False, weekend_behavior=False, commits_each_day="0,3", startDate=None, endDate=None, gradient=None, no_commit_percentage=0, working_hours="9-17"):
+def generate_commits(workdays_only=False, weekend_behavior=False, commits_per_day="0,3", start_date=None, end_date=None, gradient=None, no_commit_percentage=0, working_hours="9-17"):
     try:
-        commits_per_day = list(map(int, commits_each_day.split(",")))
+        commits_per_day = list(map(int, commits_per_day.split(",")))
         # print("COMMITS_PER DAY: ")
         print(commits_per_day)
-        gradient_type = gradient
-        # print("GRADIENT RANGE: ")
-        print(gradient_type)
         working_hours_range = list(map(int, working_hours.split("-")))
         # print("WORKING HOURS RANGE: ")
         print(working_hours_range)
@@ -24,9 +21,13 @@ def generate_commits(workdays_only=False, weekend_behavior=False, commits_each_d
         end_date = parse(end_date) if end_date else datetime.now()
         # print("END DATE: ")
         print(end_date)
+        # print("WEEKEND BEHAVIOR: ")
+        print(weekend_behavior)
+        # print("GRADIENT TYPE: ")
+        print(gradient)
 
         commit_date_list = create_commit_date_list(
-            commits_per_day, gradient_type, workdays_only, no_commit_percentage, working_hours_range, start_date, end_date
+            commits_per_day=commits_per_day, gradient=gradient, workdays_only=workdays_only, no_commit_percentage=no_commit_percentage, working_hours_range=working_hours_range, start_date=start_date, end_date=end_date, weekend_behavior=weekend_behavior
         )
         # return
         print("Generating your GitHub commit history")
