@@ -7,29 +7,75 @@ from dateutil.parser import parse
 from pathlib import Path
 from history_generator import create_commit_date_list
 
-def generate_commits(workdays_only=False, weekend_behavior=False, commits_per_day="0,3", start_date=None, end_date=None, gradient=None, no_commit_percentage=0, working_hours="9-17"):
+def validate_boolean(value, name):
+    if not isinstance(value, bool):
+        raise ValueError(f"{name} must be a boolean value.")
+
+def validate_percentage(value, name):
+    if not (0 <= value <= 1):
+        raise ValueError(f"{name} must be a floating-point number between 0 and 1 (inclusive).")
+
+def validate_working_hours(value, name):
+    if not isinstance(value, list) or len(value) != 2 or not all(isinstance(item, int) or (0 <= item <= 23) for item in value):
+        raise ValueError(f"{name} must be in the format 'int-int' of values between 0-23 in military hours.")
+
+def validate_commit_ranges(value, name):
+    if not isinstance(value, list) or len(value) != 2 or not all(isinstance(item, int) or (item >= 0) for item in value):
+        raise ValueError(f"{name} must be in the format 'int-int' of values 0 and above.")
+
+def validate_gradient(value):
+    if value not in ['linear', 'exponential', 'bursts']:
+        raise TypeError("gradient must be either 'linear', 'exponential', or 'bursts'.")
+
+def generate_commits(workdays_only=False, weekend_behavior=False, commits_per_day="0-3", start_date=None, end_date=None, gradient=None, no_commit_percentage=0, working_hours="9-17"):
     try:
-        commits_per_day = list(map(int, commits_per_day.split(",")))
-        # print("COMMITS_PER DAY: ")
-        print(commits_per_day)
-        working_hours_range = list(map(int, working_hours.split("-")))
-        # print("WORKING HOURS RANGE: ")
-        print(working_hours_range)
-        start_date = parse(start_date) if start_date else datetime.now() - timedelta(days=365)
-        # print("START DATE: ")
-        print(start_date)
-        end_date = parse(end_date) if end_date else datetime.now()
-        # print("END DATE: ")
-        print(end_date)
+        try:
+            commits_per_day = list(map(int, commits_per_day.split("-")))
+            validate_commit_ranges(commits_per_day, "commits_per_day")
+            # print("COMMITS_PER DAY: ")
+            print(commits_per_day)
+        except:
+            print("Error: commits_per_day must be in the format 'int-int' of values 0 and above.")
+            return
+        try:
+            working_hours_range = list(map(int, working_hours.split("-")))
+            validate_working_hours(working_hours_range, "working_hours")
+            # print("WORKING HOURS RANGE: ")
+            print(working_hours_range)
+        except:
+            print("Error: working_hours must be in the format 'int-int' of values between 0-23 in military hours.")
+            return
+        try:
+            start_date = parse(start_date) if start_date else datetime.now() - timedelta(days=365)
+            # print("START DATE: ")
+            print(start_date)
+        except:
+            print("Error: must be in a valid date in the format MM/DD/YYYY.")
+            return
+        try:
+            end_date = parse(end_date) if end_date else datetime.now()
+            # print("END DATE: ")
+            print(end_date)
+        except:
+            print("Error: end_date must be in a valid date in the format MM/DD/YYYY.")
+            return
         # print("WEEKEND BEHAVIOR: ")
         print(weekend_behavior)
+        validate_boolean(weekend_behavior, "weekend_behavior")
         # print("GRADIENT TYPE: ")
         print(gradient)
+        validate_gradient(gradient)
+        # print("WORKDAYS ONLY: ")
+        print(workdays_only)
+        validate_boolean(workdays_only, "workdays_only")
+        # print("NO COMMIT PERCENTAGE: ")
+        print(no_commit_percentage)
+        validate_percentage(no_commit_percentage, "no_commit_percentage")
 
         commit_date_list = create_commit_date_list(
             commits_per_day=commits_per_day, gradient=gradient, workdays_only=workdays_only, no_commit_percentage=no_commit_percentage, working_hours_range=working_hours_range, start_date=start_date, end_date=end_date, weekend_behavior=weekend_behavior
         )
-        # return
+        return
         print("Generating your GitHub commit history")
 
         history_folder = "github-history"
@@ -59,4 +105,4 @@ def generate_commits(workdays_only=False, weekend_behavior=False, commits_per_da
             )
         print(f"{len(commit_date_list)} commits have been created.")
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
+        print(f"Error: {str(e)}")
