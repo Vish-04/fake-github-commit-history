@@ -9,4 +9,4 @@ if __name__ == "__main__":
     noCommitPercentage = 0
     workingHours = "9-18"
 
-    generate_commits(startDate, endDate, gradient, workingHours, workdaysOnly=True, noCommitPercentage=0.3,commitsPerDay="1,20")
+    generate_commits(startDate, endDate, gradient, workingHours, workdaysOnly=True, noCommitPercentage=0.3,commitsPerDay="1,5")
