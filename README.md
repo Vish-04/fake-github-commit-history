@@ -1,13 +1,4 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
 
 
 <!-- PROJECT SHIELDS -->
@@ -25,28 +16,19 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Fake Github Commit History</h3>
 
   <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    a Pypi package to help fake github history
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/Vish-04/fake-github-commit-history/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/Vish-04/fake-github-commit-history/issues">Request Feature</a>
   </p>
 </div>
 
@@ -58,9 +40,6 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -70,11 +49,9 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -83,57 +60,35 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+A Pypi pakcage to fake github commit history
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-### Built With
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local repo with faked history up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+Ensure you have python. Follow the steps on the official documentation https://www.python.org/downloads/
+
+You can check what python version you have with the following command
   ```sh
-  npm install npm@latest -g
+  python --version
   ```
+Git is also necessary to run the package. Follow the documentation to install Git: https://github.com/git-guides/install-git
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Upgrade pip 
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   pip install --upgrade pip
    ```
-3. Install NPM packages
+2. Install fgch pip packages 
    ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+   pip install gh-commit-history
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -142,26 +97,102 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+<br />
+The fake github commit history generator has many different functionalities to produce various realistic and versatile commit frequencies
+<br />
+**General Usage**
+<br />
+1. Navigate to the location you wish to fake your history and enter python shell in terminal
+<br />
+Windows:
+`python`
+<br />
+Mac/Linux:
+<br />
+`python3`
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+<br />
+3. Import the module:
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+`>> from fgch.commit_generator import generate_commits`
+<br />
+3. Run the module:
+
+`>> generate_commits()`
+<br />
+A new directory titled `github-history` with a file named `fake-history.txt` should have appeared after the sequence commences
+<br />
+_Including no parameters will run the default settings_
+<br />
+4. Create a GitHub Repository with a name of your choice (recommend github-history)
+<br />
+5. Push changes into the GitHub Repository
+<br />
+Navigate to the github-history directory
+<br />
+Windows:
+<br />
+`cd .\github-history\`
+<br />
+Mac/Linux:
+<br />
+`cd /github-history`
+<br />
+
+Connect remote to GitHub Repository 
+<br />
+`git remote add origin https://github.com/<your-user-name>/<your-repository-name>.git` Ex: `git remote add origin https://github.com/Vish-04/github-history.git`
+<br />
+
+Push to Repository
+<br />
+`git push -u origin master`
+<br />
+
+_**Reload your GitHub Profile, and your history should be changed!**_
+<br />
+**Parameters**
+
+`commits_per_day` : type `String "int-int"`, default: `"0-3"`
+<br />
+_range between which the number of commits per day is chosen from_
+<br />
+`start_date` : type `String "MM/DD/YY"`, default: `None`
+<br />
+_start date of fake github history. If None, start date will be a year back from current date_
+<br />
+`end_date` : type `String "MM/DD/YY"`, default: `None`
+<br />
+_end date of fake github history. If None, end date will be the current date_
+<br />
+`workdays_only` : type `Boolean`, default: `False`
+<br />
+_restricts commits to only occur on weekdays_
+<br />
+`weekend_behavior` : type `Boolean`, default: `False`
+<br />
+_lowers commit frequency to 0-1 commits on weekends_
+<br />
+`working_hours` : type `String "int-int"`, default: `9-17`
+<br />
+_determines between what hours in military time to commit between_
+<br />
+`gradient` : type `String`, default: `None`
+<br />
+_increases commits per day closer to the higher number of commit range over time - choose between 'linear', 'exponential', 'bursts'_
+- linear: linearly increases commits per day
+- exponential: exponentially increases commits per day
+- bursts: increases and decreases commits per day in batches of 3 weeks, mimicking sprints
+<br />
+`no_commit_percentage` : type `Float`, default: `0`
+<br />
+_float between 0 and 1 that determines what percentage of history to not fake commits too_
+
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -186,7 +217,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -195,20 +226,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Vishwa Akkati - [LinkedIn](https://linkedin.com/in/vishwa-akkati) - vakkati@ucdavis.edu
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
+Project Link: [https://github.com/Vish-04/fake-github-commit-history](https://github.com/Vish-04/fake-github-commit-history)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -216,32 +236,16 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/Vish-04/fake-github-commit-history.svg?style=for-the-badge
+[contributors-url]: https://github.com/Vish-04/fake-github-commit-history/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Vish-04/fake-github-commit-history.svg?style=for-the-badge
+[forks-url]: https://github.com/Vish-04/fake-github-commit-history/network/members
+[stars-shield]: https://img.shields.io/github/stars/Vish-04/fake-github-commit-history.svg?style=for-the-badge
+[stars-url]: https://github.com/Vish-04/fake-github-commit-history/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Vish-04/fake-github-commit-history.svg?style=for-the-badge
+[issues-url]: https://github.com/Vish-04/fake-github-commit-history/issues
+[license-shield]: https://img.shields.io/github/license/Vish-04/fake-github-commit-history.svg?style=for-the-badge
+[license-url]: https://github.com/Vish-04/fake-github-commit-history/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://linkedin.com/in/vishwa-akkati
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
