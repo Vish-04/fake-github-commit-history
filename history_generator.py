@@ -1,6 +1,5 @@
 import random
-from datetime import datetime, timedelta
-from dateutil.parser import parse
+from datetime import timedelta
 
 def create_commit_date_list(commits_per_day, gradient, workdays_only, no_commit_percentage, working_hours_range, start_date, end_date, weekend_behavior):
     commit_date_list = []
@@ -10,11 +9,7 @@ def create_commit_date_list(commits_per_day, gradient, workdays_only, no_commit_
 
     while current_date <= end_date:
         day_count += 1
-        # print("LOOPING ")  
-        # print(current_date)
         if workdays_only and current_date.weekday() >= 5:
-            # print("SKIPPED A DAY")
-            # print(current_date.weekday())
             current_date += timedelta(days=1)
         else:
             if random.random() <= no_commit_percentage:
